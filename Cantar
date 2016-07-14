@@ -1,0 +1,47 @@
+namespace Cantar
+{
+    public class Cantar
+    {
+        private int masaCurenta = 0;
+
+        /// <summary>
+        /// Aceasta metoda trebuie sa intoarca masa curenta (dupa adaugarea noii cantitati), daca este valida. In caz ca masa nu este valida (depaseste 30 de kilograme) trebuie aruncata o eroare.
+        /// </summary>
+        /// <param name="masa"></param>
+        /// <returns></returns>
+        public int AdaugaMasa(int masa)
+        {
+            masaCurenta += masa;
+            if (MasaMaximaDepasita(masaCurenta))
+                throw new System.Exception("ERROR: Masa maxima atinsa sau depasita!");
+            return masaCurenta;
+        }
+
+        /// <summary>
+        /// Aceasta metoda trebuie returneze masa curenta (dupa scaderea noii cantitati). 
+        /// </summary>
+        /// <param name="masa"></param>
+        /// <returns></returns>
+        public int ScadeMasa(int masa)
+        {
+            masaCurenta -= masa;
+            return masaCurenta;
+        }
+
+        public int ReseteazaMasa()
+        {
+            masaCurenta = 0;
+            return masaCurenta;
+        }
+
+        /// <summary>
+        /// Aceasta metoda ne arata daca s-a depasit masa maxima de 30 de kilograme.
+        /// </summary>
+        /// <param name="masa"></param>
+        /// <returns>True daca masa depaseste 30 de kilograme. Altfel, false.</returns>
+        public bool MasaMaximaDepasita(int masa)
+        {
+            return masa >= 30;
+        }
+    }
+}
